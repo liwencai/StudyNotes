@@ -217,7 +217,75 @@ new Vue({
     }
 })
 ```
-
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue实例的生命周期</title>
+</head>
+<body>
+<div id="app">
+  <h1>测试template和HTML的优先级</h1>
+    <div id="app">
+        <p>HTML优先</p>
+    </div>
+</div>
+ <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+<script>
+  const app = new Vue({
+    data: {
+      msg:"template优先",
+      mg:'123'
+    },
+    template:"<p>{{msg}}</p>",
+    render:function(createElement){// --- render函数定义模板 ***
+            return createElement("div",{// --- 3个参数  （标签，样式，内容）
+                style:{
+                    width:"100%",
+                    height:"200px",
+                    border:"1px solid #666"
+                }
+            },[
+                this.mg
+            ])
+        },
+    methods: {
+      handlerUpdate() {
+        this.msg=this.msg.split("").reverse().join("")
+      }
+    },
+    //按照示意图依次调用
+    beforeCreate(){
+      console.log("调用了beforeCreate钩子函数");
+    },
+    created(){
+      console.log("调用了created钩子函数");
+    },
+    beforeMount(){
+      console.log('调用了beforeMount钩子函数');
+    },
+    mounted(){
+      console.log('调用了mounted钩子函数');
+    },
+    beforeUpdate(){
+      console.log("调用了beforeUpdate钩子函数")
+    },
+    updated(){
+      console.log("调用了updated钩子函数");
+    },
+    beforeDestroy(){
+      console.log("调用了beforeDestroy钩子函数");
+    },
+    destroyed(){
+      console.log("调用了destroyed钩子函数");
+    }
+  })
+   app.$mount('#app')
+</script>
+</body>
+</html>
+```
 ## 2.4 beforeMount和mounted钩子函数间的生命周期
 
 ![](https://cdn.jsdelivr.net/gh/krislinzhao/IMGcloud/img/20200516092939.png)
