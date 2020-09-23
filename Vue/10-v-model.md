@@ -99,7 +99,6 @@
 # 4. v-model结合checkbox类型使用
 
 ​	checkbox可以结合v-model做单选框，也可以多选框。
-
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -114,20 +113,79 @@
   <label for="agree">
     <input type="checkbox" id="agree" v-model="isAgree">同意协议
   </label>
-  <!--多选框-->
-  <h2>多选框</h2>
-  <label :for="item" v-for="(item,index) in hobbies" :key="index">
-    <input type="checkbox" name="hobby" :value="item" :id="item" v-model="hobbies">{{item}}
-  </label>
-  <h2>你的爱好是：{{hobbies}}</h2>
+  <h3>您的选选择是：{{isAgree}}</h3>
+  <button :disabled="!isAgree">下一步</button>
 </div>
-<script src="../js/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
 <script>
   const app = new Vue({
     el: '#app',
     data: {
-      isAgree: false,
-      hobbies: ["篮球","足球","乒乓球","羽毛球"]
+      isAgree: true
+     
+    }
+  })
+</script>
+</body>
+</html>
+```
+多选
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <!--多选框-->
+  <h2>多选框</h2>
+  
+    <input type="checkbox" name="hobby" value="篮球"  v-model="hobbies">篮球
+    <input type="checkbox" name="hobby" value="足球"  v-model="hobbies">足球
+    <input type="checkbox" name="hobby" value="羽毛球"  v-model="hobbies">羽毛球
+    <input type="checkbox" name="hobby" value="乒乓球"  v-model="hobbies">乒乓球
+  <h2>你的爱好是：{{hobbies}}</h2>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      hobbies: []
+
+    }
+  })
+</script>
+</body>
+</html>
+```
+值的绑定
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <!--多选框-->
+  <h2>多选框</h2>
+  <label :for="item" v-for="(item,index) in hhobbies" :key="index">
+    <input type="checkbox" name="hobby" :value="item" :id="item" v-model="hobbies">{{item}}
+  </label>
+  <h2>你的爱好是：{{hobbies}}</h2>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      hobbies: [],
+      hhobbies: ["篮球","足球","乒乓球","羽毛球"]
+
     }
   })
 </script>
@@ -207,7 +265,7 @@
     <input type="text" v-model.trim="name">
 
   </div>
-  <script src="../js/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
   <script>
     const app = new Vue({
       el:"#app",
