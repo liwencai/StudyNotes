@@ -5,6 +5,63 @@
 ![](https://cdn.jsdelivr.net/gh/krislinzhao/IMGcloud/img/20200516085242.png)
 
 > 测试代码
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+</head>
+<body>
+	<div id="root">
+    
+	</div>
+</body>
+<script type="text/javascript" src="./vue.js"></script>
+<script type="text/javascript">
+  var vm = new Vue({
+  	el : '#root',
+	data(){
+		return{
+			msg:"111"
+		}
+		
+	},
+	template:'<div>{{msg}}</div>',
+	beforeCreate:function(){
+		console.log('beforeCreate');
+	}, 
+	created:function(){
+		console.log('created');
+	}, 
+	beforeMount:function(){
+		console.log(this.$el);
+		console.log('beforeMount');
+	},
+	mounted:function(){
+		console.log(this.$el);
+		console.log('Mount');
+	},
+	
+	beforeUpdate(){
+		console.log("调用了beforeUpdate钩子函数");
+	},
+	updated(){
+		console.log("调用了Update钩子函数");
+	},
+	beforeDestroy(){
+		      console.log("调用了beforeDestroy钩子函数");
+		    },
+	destroyed(){
+		      console.log("调用了destroyed钩子函数");
+		    },
+  })
+
+</script>
+</html>
+```
+
 
 ```html
 <!DOCTYPE html>
