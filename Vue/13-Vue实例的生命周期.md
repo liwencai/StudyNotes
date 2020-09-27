@@ -560,3 +560,52 @@ app.msg = 2
 </html>
 
 ```
+局部
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+		   <my-comp></my-comp>
+		</div>
+		<template id="cpn2">
+			<div class="hello"><div v-test='name'></div></div>
+		</template>
+		<script type="text/javascript" src="./vue.js"></script>
+		<script type="text/javascript">
+		    new Vue({
+		        el: '#app',
+		        data: {
+		            msg: 'Hello'
+		        },
+		        components: {
+		            myComp:  {
+						template:'#cpn2',
+						data () {
+						    return {
+						     name:'我是名字2',
+						    }
+						},
+						directives:{
+						  	test:{
+							    inserted: function (el,binding) {// 指令的定义
+							       //el为绑定元素，可以对其进行dom操作
+							       console.log(binding) //一个对象，包含很多属性属性
+							    },
+							    bind: function (el, binding, vnode) {
+								    el.innerHTML = binding.value
+								  }
+						  	}
+						  },
+					}
+		        }
+		    })
+		</script>
+	</body>
+</html>
+
+```
