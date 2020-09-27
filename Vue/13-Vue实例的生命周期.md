@@ -435,3 +435,59 @@ app.msg = 2
 - beforeDestroy： 你确认删除XX吗？
 - destroyed ：当前组件已被删除，清空相关内容
 
+
+总线机制 发布订阅者模式
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+</head>
+<body>
+	<div id="root">
+       <child content="DELL"></child>
+	   <child content="LEE"></child>
+	</div>
+</body>
+<script type="text/javascript" src="./vue.js"></script>
+<script type="text/javascript">
+	Vue.prototype.bus = new Vue()
+   Vue.component('child',{
+	 data(){
+		return {
+			dcontent:this.content
+		}  
+	  },
+	props:{
+		content:String
+	},
+	template:'<div @click="handelClick">{{dcontent}}</div>',
+	methods:{
+		handelClick(){
+			this.bus.$emit('change',this.dcontent)
+		}
+	},
+	mounted(){
+		var that = this;
+		this.bus.$on('change',function(msg){
+			console.log(that);
+			that.dcontent=msg
+		})
+	}
+})
+  var vm = new Vue({
+  	el : '#root',
+	data(){
+		return{
+			msg:"111"
+		}
+		
+	},
+	
+  })
+
+</script>
+</html>
+```
