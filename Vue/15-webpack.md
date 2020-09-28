@@ -295,6 +295,10 @@ webpack有全局安装和局部安装。
 ```shell
 npm install webpack@3.6.0 --save-dev
 ```
+dependencies依赖的包不仅线上环境可以用，开发环境也能使用
+devDependencies节点下的模块是开发时候需要
+webpack，预处理器less、sass这些只在开发环境有用，所以使用–save-dev安装
+dependencies节点下的模块是线上代码运行需要的，如axios、vue-router、vuex，所以需要使用–save安装
 
 package.json中自动加上开发时的依赖`devDependencies`
 
