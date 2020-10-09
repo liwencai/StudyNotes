@@ -1153,3 +1153,125 @@ export default {
 ```
 
 > `include`和`exclude`都是使用字符串和正则表达式，使用字符串的时候，注意“,”之后之前都别打空格。
+
+
+
+
+
+vue实现部分页面导入底部 vue配置公用头部、底部，可控制显示隐藏
+
+在app.vue文件里引入公共的header 和 footer
+
+header 和 footer 默认显示，例如某个页面不需要显示header
+
+可以使用 this.$emit('header',false); 来控制header不显示
+
+例如：test页面不需要显示header，在页面被创建的时候广播(this.$emit)告诉上级不显示header，
+
+并且在当前页面写自己的header代码，就可以了
+app.vue
+```html
+<template>
+  <div id="app">
+    <app-header v-if="header_show"></app-header>
+    <router-view v-on:header="header" v-on:footer="footer"></router-view>
+    <app-footer v-if="footer_show"></app-footer>
+  </div>
+</template>
+ 
+<script>
+import Header from './components/header'
+import Footer from './components/footer'
+export default {
+  name: 'App',
+  data(){
+      return {
+          header_show:true,
+          footer_show:true,
+      }
+  },
+  components: {
+        'app-header':Header,
+        'app-footer':Footer,
+  },
+  methods:{
+      //是否显示头部
+      header:function (bool) {
+        this.header_show = bool;
+      },
+      //是否显示底部
+      footer:function (bool) {
+          this.footer_show = bool;
+      }
+  }
+}
+</script>
+
+```
+test.vue
+```html
+<template>
+    <div>
+        test
+    </div>
+</template>
+ 
+<script>
+    export default {
+        name: 'test',
+        components:{
+        },
+        data () {
+            return {
+             
+            }
+        },
+        created:function () {
+            this.$emit('header', false);
+        }
+    }
+</script>
+
+```
+header.vue
+```html
+<template>
+    <div class="header">
+        head
+    </div>
+</template>
+ 
+<script>
+    export default {
+        name: 'app-header',
+        data () {
+            return {
+            }
+        },
+        methods:{
+        },
+        created(){
+        }
+    }
+</script>
+
+```
+footer.vue
+```html
+<template>
+    <div class="wrap" id="app-footer">
+        footer
+    </div>
+</template>
+ 
+<script>
+    export default {
+        name: 'app-footer',
+        data () {
+            return {
+            }
+        }
+    }
+</script>
+
+```
