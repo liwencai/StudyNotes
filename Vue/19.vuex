@@ -1532,4 +1532,3 @@ function resetStoreVM (store, state, hot) {
 ![](https://gitee.com/krislin_zhao/IMGcloud/raw/master/img/20200521124912.png)
 
 vuex整体思想诞生于**flux**,可其的实现方式完完全全的使用了vue自身的响应式设计，依赖监听、依赖收集都属于vue对对象Property set get方法的代理劫持。最后一句话结束vuex工作原理，`vuex中的store本质就是没有`template`的隐藏着的vue组件；`
-
