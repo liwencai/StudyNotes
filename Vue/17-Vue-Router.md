@@ -296,7 +296,7 @@ const router = new Router({
      //配置路由和组件之间的应用关系
      routes,
      mode: 'history',//修改模式为history
-     linkActiveClass: 'active'
+     linkExactActiveClass: 'active'
    })
    ```
 
