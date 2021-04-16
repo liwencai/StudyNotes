@@ -1226,9 +1226,12 @@ test.vue
              
             }
         },
-        created:function () {
-            this.$emit('header', false);
-        }
+        created: function() {
+	  this.$emit('header', false);
+		},
+	beforeDestroy(){
+	  this.$emit('header', true);
+	}
     }
 </script>
 
