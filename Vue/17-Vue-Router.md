@@ -1278,3 +1278,10 @@ footer.vue
 </script>
 
 ```
+如果app.vue中带有keep-alive标签 那么就在test.vue页面使用activated() {
+			
+			this.$emit('header', false);
+		},
+		deactivated() {
+			
+			this.$emit('header', true);
