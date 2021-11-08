@@ -1154,8 +1154,123 @@ export default {
 
 > `include`和`exclude`都是使用字符串和正则表达式，使用字符串的时候，注意“,”之后之前都别打空格。
 
+## 9.vue-router 的命名视图的使用
+在开发中我们经常会遇到这种情况，就是有个项目的header是公用的，在各个页面中都会使用到，所以我们会将其设置为一个公共组件，
+然后在各个页面中引用，但是每个页面都去引用真是太麻烦了，所以在Vue中注册引用，这样就会在所有的页面中都有header了
+```vue
+<template>
+	<div id="app">
+		<div id="nav">
+			<router-view name='MainHeader'></router-view>
+			<router-link to="/">Home</router-link> |
+			<router-link to="/about">about</router-link> |
+			<router-link to="/user">user</router-link>
+		</div>
+		
+		<router-view></router-view>
+		<!-- <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+	</div>
+</template>
 
+<script>
+	/* import HelloWorld from './components/HelloWorld.vue' */
 
+	export default {
+		name: 'App',
+		/* components: {
+			HelloWorld
+		} */
+	}
+</script>
+
+<style>
+	* {
+		margin:0;padding:0;
+	}
+	#app {
+		font-family: Avenir, Helvetica, Arial, sans-serif;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-align: center;
+		color: #2c3e50;
+	
+	}
+
+	#nav {
+		/* padding: 30px; */
+	}
+
+	#nav a {
+		font-weight: bold;
+		color: #2c3e50;
+	}
+
+	#nav a.router-link-exact-active {
+		color: #42b983;
+	}
+</style>
+
+```
+但是这样的话会在所有的页面都有header头部，事实上有一些页面是没有header的，例如登录页面，注册页面等等。那我们该怎么办呢
+这个时候我们就可以使用view-router命名视图了
+命名视图是什么么？
+官网是这么解释的：
+
+有时候想同时（同级）展示多个视图，而不是嵌套展示，例如创建一个布局，有 sidebar（侧导航） 和 main（主内容） 两个视图，这个时候命名视图就派上用场了。你可以在界面中拥有多个单独命名的视图，而不是只有一个单独的出口。如果 router-view 没有设置名字，那么默认为 default
+如何使用呢？
+现在我们拥有一个公共头部叫MainHeader，我们在其他组件中引用，在App.vue中
+```vue
+<template>
+	<div id="app">
+		<div id="nav">
+			<router-view name='MainHeader'></router-view>
+			<router-link to="/">Home</router-link> |
+			<router-link to="/about">about</router-link> |
+			<router-link to="/user">user</router-link>
+		</div>
+		
+		<router-view></router-view>
+		<!-- <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+	</div>
+</template>
+```
+注意不需要import mainheader组件
+然后在配置路由index.js中引入import MainHeader from '@/components/mainheader' 中
+在路由配置项：
+```vue
+{
+    path: '/home',
+    name: 'Home',
+    components: {
+      default: Home,
+      MainHeader: MainHeader
+    }
+  }
+```
+注意是components 而不是component ，在需要使用头部的文件中写入MainHeader(APP.vue的view-router的name)就可以啦
+附MainHeader.vue
+```vue
+<template>
+	<div class="header">我是头部</div>
+</template>
+
+<script>
+	export default {
+		name:'MainHeader'
+	}
+</script>
+
+<style>
+	.header {
+		width: 100%;
+		height:60px;
+		background-color: #333;
+	}
+</style>
+
+```
 
 
 vue实现部分页面导入底部 vue配置公用头部、底部，可控制显示隐藏
