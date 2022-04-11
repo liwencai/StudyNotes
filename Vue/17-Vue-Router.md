@@ -1,7 +1,7 @@
 # 1. 路由简介
 
 **什么是路由？**
-
+https://img-blog.csdnimg.cn/086715fa936a4308b0d642874a0156bf.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6Z2S6Zizemk=,size_20,color_FFFFFF,t_70,g_se,x_16
 - 路由就是通过互联的网络把信息从源地址传送到目的地的活动
 
 - 路由提供了两种机制：路由和传送
