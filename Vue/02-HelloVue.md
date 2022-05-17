@@ -1,10 +1,12 @@
 # 1. HelloVuejs
 
-​	如何开始学习Vue，当然是写一个最简单的demo，直接上代码。此处通过cdn`<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>`获取vuejs。
+​	如何开始学习Vue，当然是写一个最简单的demo，直接上代码。
+此处通过cdn`<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>`获取vuejs。
 ![image](https://user-images.githubusercontent.com/33476906/168754506-3dfe3c3f-d2ba-425f-9171-ac41b9a17437.png)
 ![image](https://user-images.githubusercontent.com/33476906/168754574-a6c1462f-a68a-4f05-aff0-4cabd141892a.png)
-​	vue是声明式编程，区别于jquery的命令式编程。
+Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。
 
+​	vue是声明式编程，区别于jquery的命令式编程。
 ## 1.1.  命令式编程
 
 ​	原生js做法（命令式编程）
