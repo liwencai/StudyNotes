@@ -1,7 +1,8 @@
 # 1. HelloVuejs
 
 ​	如何开始学习Vue，当然是写一个最简单的demo，直接上代码。此处通过cdn`<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>`获取vuejs。
-
+![image](https://user-images.githubusercontent.com/33476906/168754506-3dfe3c3f-d2ba-425f-9171-ac41b9a17437.png)
+![image](https://user-images.githubusercontent.com/33476906/168754574-a6c1462f-a68a-4f05-aff0-4cabd141892a.png)
 ​	vue是声明式编程，区别于jquery的命令式编程。
 
 ## 1.1.  命令式编程
